@@ -30,7 +30,6 @@ public class Controller implements Config {
     @GetMapping("")
     public void getExcelFile(@RequestParam String ontologies,
                              HttpServletResponse httpResponse) throws IOException {
-        final Options options = getOptions();
 
         try {
 
