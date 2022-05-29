@@ -27,6 +27,9 @@ import java.util.Locale;
 public class Controller implements Config {
 
 
+    /**
+     * creates the Excel file and return the result
+     */
     @GetMapping("")
     public void getExcelFile(@RequestParam String ontologies,
                              HttpServletResponse httpResponse) throws IOException {
@@ -88,14 +91,23 @@ public class Controller implements Config {
         httpResponse.sendError(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
     }
 
+    /**
+     *
+     */
     private static String getErrorMessage(JsonObject response) {
         return response.getAsJsonObject("status").get("message").getAsString();
     }
 
+    /**
+     *
+     */
     private static boolean isResponseOK(JsonObject response) {
         return response != null && response.getAsJsonObject("status").get("success").getAsBoolean();
     }
 
+    /**
+     *
+     */
     private static JsonObject getJsonFromFairService(String URI) throws IOException {
         JsonObject out;
         URL url = new URL(URI);
@@ -106,7 +118,9 @@ public class Controller implements Config {
         return out;
     }
 
-
+    /**
+     *
+     */
     private static Options getOptions() {
         final Options options = new Options();
 
